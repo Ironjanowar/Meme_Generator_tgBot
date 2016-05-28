@@ -1,0 +1,31 @@
+Esto es un bot de Telegram programado en Python gracias a esta [[https://github.com/eternnoir/pyTelegramBotAPI/tree/02c22c990b1affe9d43d8920f6b53fa10c38a82e][API]] que nos ofrece [[https://github.com/eternnoir][@eternnoir]].
+
+* Instalación and uso
+- Instalar las [[https://github.com/eternnoir/pyTelegramBotAPI#getting-started][dependencias]]
+#+BEGIN_SRC bash
+  $ pip install pyTelegramBotAPI
+#+END_SRC
+
+- Clonar el repositorio
+#+BEGIN_SRC bash
+   $ git clone https://github.com/Ironjanowar/Meme_Generator_tgBot.git
+   $ cd Meme_Generator_tgBot
+#+END_SRC
+
+- Crear un archivo llamado *bot.token* con tu token.
+#+BEGIN_SRC bash
+  $ echo "TOKEN" > convertor.token
+#+END_SRC
+
+*NOTE:* Si no tienes, consigue tu propio /token/ [[https://core.telegram.org/bots][aqui]].
+
+- Iniciar el bot
+#+BEGIN_SRC bash
+  $ ./run.sh
+#+END_SRC
+* Comandos
+  - /newmeme :: Crea un meme. /newmeme [id | nombre] o /newmeme escribiendo después [id | nombre]
+  - /memelist :: Muestra los distintos memes disponibles con sus IDs
+  - /start :: Empieza el bot
+  - /help :: Muestra esta ayuda
+  - /cancel :: Cancela el proceso de crear meme en cualquier punto
