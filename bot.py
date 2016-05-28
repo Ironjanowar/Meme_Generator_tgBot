@@ -3,8 +3,6 @@ import requests
 import json
 import shutil
 import os
-from telebot import types
-import base64
 
 # Listener
 
