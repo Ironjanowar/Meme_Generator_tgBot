@@ -1,0 +1,9 @@
+# Emacs stuff
+*~
+
+# Token
+*.token
+
+# Other files
+request.json
+json_reader.py
