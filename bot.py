@@ -158,9 +158,13 @@ def create_meme_step0(m):
 def create_meme_step1(m):
     upper_text = m.text
     uid = m.from_user.id
-    users_memes[uid]['text0'] = upper_text
+    if m.text == "/abajo":
+        users_memes[uid]['text0'] = ""
+        bot.send_message(m.chat.id, "En ese caso, escribe lo que quieras que aparezca solo abajo.")
+    else:
+        users_memes[uid]['text0'] = upper_text
+        bot.send_message(m.chat.id, "Bien! Ahora lo que quieres que aparezca abajo.")
     users_tracked[uid] = 2
-    bot.send_message(m.chat.id, "Bien! Ahora lo que quieres que aparezca abajo.")
 
 
 @bot.message_handler(func=lambda m: m.from_user.id in users_tracked.keys() and users_tracked[m.from_user.id] == 2)
