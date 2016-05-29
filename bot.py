@@ -133,7 +133,7 @@ def create_meme(m):
             users_memes[uid]['template_id'] = get_meme_id(meme, memes) if meme in get_meme_list(memes) else int(meme)
             users_memes[uid]['username'] = api_username
             users_memes[uid]['password'] = api_pass
-            bot.reply_to(m, "Okkay! Mandame lo que quieres que aparezca en el texto de arriba.")
+            bot.reply_to(m, "Okkay! Mandame lo que quieres que aparezca en el texto de arriba.\nSi solo quieres texto de abajo escribe /abajo")
         else:
             reply = "\"" + meme + "\" no es un meme que esté disponible.\nPrueba /memelist para ver los memes disponibles."
             bot.reply_to(m, reply)
