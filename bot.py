@@ -82,7 +82,7 @@ with open('./bot.token', 'r') as TOKEN:
 bot.set_update_listener(listener)
 
 # Preparamos el json de memes
-with open('./request.json', 'r') as json_memes:
+with open('./data/request.json', 'r') as json_memes:
     full_json = json.load(json_memes)
     global memes
     memes = full_json['data']['memes']
@@ -147,7 +147,7 @@ def create_meme_step0(m):
         users_memes[uid]['template_id'] = get_meme_id(meme, memes) if meme in get_meme_list(memes) else int(meme)
         users_memes[uid]['username'] = api_username
         users_memes[uid]['password'] = api_pass
-        bot.reply_to(m, "Okkay! Mandame lo que quieres que aparezca en el texto de arriba.")
+        bot.reply_to(m, "Okkay! Mandame lo que quieres que aparezca en el texto de arriba.\nSi solo quieres texto de abajo escribe /abajo")
         users_tracked[uid] = 1
     else:
         reply = "\"" + meme + "\" no es un meme que esté disponible."
