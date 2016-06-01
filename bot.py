@@ -61,6 +61,14 @@ def get_meme_string(memes):
     return meme_list
 
 
+def isAdmin_fromPrivate(message):
+    if message.chat.type == 'private':
+        userID = message.from_user.id
+        if str(userID) in admins:
+            return True
+    return False
+
+
 def help_message():
     commands = {
         'newmeme': "Crea un meme. \"/newmeme [id | nombre]\" o \"/newmeme\" escribiendo después [id | nombre]\n",
@@ -77,6 +85,10 @@ def help_message():
 # Creamos el bot
 with open('./bot.token', 'r') as TOKEN:
     bot = telebot.TeleBot(TOKEN.readline().strip())
+
+# Cargamos los administradores
+with open('./data/admins.json', 'r') as adminData:
+    admins = json.load(adminData)
 
 # Inicializamos el listener
 bot.set_update_listener(listener)
@@ -201,6 +213,19 @@ def help(m):
 @bot.message_handler(commands=['start'])
 def start(m):
     bot.send_message(m.chat.id, "Hey! Este es un bot para crear tus propios memes!\n\nHecho por @CesharPaste\n\nLink: https://github.com/Ironjanowar/Meme_Generator_tgBot")
+
+# Only admins!!
+
+
+@bot.message_handler(commands=['update'])
+def auto_update(message):
+    if isAdmin_fromPrivate(message):
+        bot.reply_to(message, "Reiniciando..\n\nPrueba algun comando en 10 segundos")
+        print("Updating..")
+        sys.exit()
+    else:
+        bot.reply_to(message, "Este comando es solo para admins y debe ser enviado por privado")
+
 
 # Ignoramos los mensajes anteriores
 bot.skip_pending = True
